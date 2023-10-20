@@ -1,7 +1,6 @@
 // popup.js
 document.addEventListener('DOMContentLoaded', function () {
     // Define variables for the UI elements
-    const startLoggingButton = document.getElementById('start-logging');
     const stopLoggingButton = document.getElementById('stop-logging');
     const previousUrl = document.getElementById('previous-url');
     const currentUrl = document.getElementById('current-url');
@@ -10,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const resetPointsButton = document.getElementById('reset-points');
 
     // Set up a variable to track logging status
-    let isLogging = false;
+    let isLogging = true;
     let previousURL = ''; // Track the previous URL for changes
 
     // Function to update the UI with the previous and current URLs
@@ -31,8 +30,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Function to update reward points in the UI
     function updateRewardPoints(points) {
-        // Limit to three decimal places
-        rewardPointsElement.textContent = points.toFixed(3);
+        if (chrome.runtime.lastError) {
+            console.error(chrome.runtime.lastError);
+            return; // Handle the error, return, or do nothing as needed.
+        }
+
+        if (typeof points === 'number' && !isNaN(points)) {
+            // Limit to three decimal places
+            rewardPointsElement.textContent = points.toFixed(3);
+        } else {
+            console.error('Invalid points value:', points);
+        }
     }
 
     // Function to handle the "Reset Points" button
@@ -42,23 +50,23 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Initialize the reward points
-    chrome.runtime.sendMessage({ action: 'getRewardPoints' }, function (points) {
-        updateRewardPoints(points);
-    });
+    // Initialize the reward points and handle undefined case
+    let points = 0.0;
+    chrome.runtime.sendMessage({ action: 'getRewardPoints' }, function (retrievedPoints) {
+        if (chrome.runtime.lastError) {
+            console.error(chrome.runtime.lastError);
+            return; // Handle the error, return, or do nothing as needed.
+        }
 
-    // Handle the "Start Logging" button click
-    startLoggingButton.addEventListener('click', function () {
-        isLogging = true;
-        startLoggingButton.disabled = true;
-        stopLoggingButton.disabled = false;
-        chrome.runtime.sendMessage({ action: 'startLogging' });
+        if (retrievedPoints !== undefined) {
+            points = retrievedPoints;
+        }
+        updateRewardPoints(points);
     });
 
     // Handle the "Stop Logging" button click
     stopLoggingButton.addEventListener('click', function () {
         isLogging = false;
-        startLoggingButton.disabled = false;
         stopLoggingButton.disabled = true;
         chrome.runtime.sendMessage({ action: 'stopLogging' });
     });
@@ -66,7 +74,14 @@ document.addEventListener('DOMContentLoaded', function () {
     // Function to check if the URL has changed and increment points
     function checkURLChange() {
         chrome.runtime.sendMessage({ action: 'getURLs' }, function (urls) {
+            if (chrome.runtime.lastError) {
+                console.error(chrome.runtime.lastError);
+                return; // Handle the error, return, or do nothing as needed.
+            }
+
             if (urls.currentURL !== previousURL) {
+                // Update both previous and current URLs
+                updateURLs(previousURL, urls.currentURL);
                 previousURL = urls.currentURL; // Update previous URL
                 if (urls.currentURL !== urls.targetURL) {
                     chrome.runtime.sendMessage({ action: 'incrementRewardPoints' }, function (points) {
@@ -83,11 +98,18 @@ document.addEventListener('DOMContentLoaded', function () {
     // Call the updateUI function initially and at regular intervals
     function updateUI() {
         chrome.runtime.sendMessage({ action: 'getClickData' }, function (clickData) {
+            if (chrome.runtime.lastError) {
+                console.error(chrome.runtime.lastError);
+                return; // Handle the error, return, or do nothing as needed.
+            }
+
             displayClickData(clickData);
         });
 
-        chrome.runtime.sendMessage({ action: 'getURLs' }, function (urls) {
-            updateURLs(urls.currentURL, urls.targetURL);
+        // Fetch the current URL from the active tab using chrome.tabs
+        chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+            const currentTab = tabs[0];
+            updateURLs(previousURL, currentTab.url);
         });
     }
 
