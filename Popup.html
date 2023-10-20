@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Click Logger Dashboard</title>
+    <style>
+        body {
+            width: 300px;
+            padding: 10px;
+        }
+
+        h2 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Click Logger</h2>
+    <p><b>Current URL:</b> <span id="current-url">N/A</span></p>
+    <p><b>Target URL:</b> <span id="target-url">N/A</span></p>
+    <p><b>Reward Points:</b> <span id="reward-points">0</span></p>
+    <button id="start-logging">Start Logging</button>
+    <button id="stop-logging">Stop Logging</button>
+    <button id="reset-points">Reset Points</button>
+    <ul id="click-log">
+        <!-- Click data will be added here dynamically -->
+    </ul>
+    <script src="popup.js"></script>
+</body>
+</html>
