@@ -1,0 +1,46 @@
+query Profile($request: SingleProfileQueryRequest!, $who: ProfileId) {
+  profile(request: $request) {
+    ...ProfileFields
+    metadata
+    followNftAddress
+    isFollowing(who: $who)
+    invitedBy {
+      handle
+      picture {
+        ... on MediaSet {
+          original {
+            url
+          }
+        }
+        ... on NftImage {
+          uri
+          tokenId
+          contractAddress
+          chainId
+        }
+      }
+    }
+    dispatcher {
+      address
+      canUseRelay
+      sponsor
+    }
+    onChainIdentity {
+      proofOfHumanity
+      sybilDotOrg {
+        verified
+        source {
+          twitter {
+            handle
+          }
+        }
+      }
+      ens {
+        name
+      }
+      worldcoin {
+        isHuman
+      }
+    }
+  }
+}

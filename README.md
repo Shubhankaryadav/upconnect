@@ -1,100 +1,83 @@
-# Foodie
-A social media for food lovers and for people looking for new ideas for their next menu. A facebook/instagram-like inspired social media.
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/69431456/183576577-2486db3f-f0a9-4252-b283-a8322e5eb8b6.png" alt="Hey Logo">
+    <h1>Hey</h1>
+    <strong>Decentralized, and permissionless social media app 🌿</strong>
+</div>
+<br>
+<div align="center">
+    <a href="https://hey.xyz/u/yoginth">
+        <img src="https://lens-badge.vercel.app/api/badge/yoginth.lens" alt="Lens">
+    </a>
+    <a href="https://vercel.com/heyxyz?utm_source=Hey&utm_campaign=oss">
+        <img src="https://therealsujitk-vercel-badge.vercel.app/?app=heyxyz" alt="Vercel">
+    </a>
+    <a href="https://deepsource.io/gh/heyxyz/hey">
+        <img src="https://deepsource.io/gh/heyxyz/hey.svg/?label=active+issues&show_trend=true" alt="GitHub actions">
+    </a>
+    <a href="https://www.gitpoap.io/gh/heyxyz/hey">
+        <img src="https://public-api.gitpoap.io/v1/repo/heyxyz/hey/badge" alt="Gitpoap">
+    </a>
+    <a href="https://translate.hey.xyz">
+        <img src="https://badges.crowdin.net/heyxyz/localized.svg" alt="Crowdin">
+    </a>
+    <a href="https://status.hey.xyz">
+        <img height="20px" src="https://betteruptime.com/status-badges/v1/monitor/dfaw.svg" alt="Uptime">
+    </a>
+    <a href="https://hey.checkly-dashboards.com">
+        <img src="https://api.checklyhq.com/v1/badges/checks/0f10fc23-4359-4cf9-a062-dbaa5a4cf0ea?style=flat&theme=default&responseTime=true" alt="Checkly">
+    </a>
+    <a href="https://github.com/heyxyz/hey/stargazers">
+        <img src="https://img.shields.io/github/stars/heyxyz/hey?label=Stars&logo=github" alt="Stargazers">
+    </a>
+    <a href="https://github.com/heyxyz/hey/blob/main/LICENSE">
+        <img src="https://img.shields.io/github/license/heyxyz/hey?label=Licence&logo=gnu" alt="License">
+    </a>
+    <a href="https://hey.xyz/discord">
+        <img src="https://img.shields.io/discord/953679040722665512.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2" alt="Discord">
+    </a>
+    <a href="https://github.com/orgs/heyxyz/projects/6/views/3">
+        <img src="https://img.shields.io/github/issues/heyxyz/hey/Bounty?color=8b5cf6&label=Bounties&logo=ethereum" alt="Bounties">
+    </a>
+</div>
+<div align="center">
+    <br>
+    <a href="https://hey.xyz"><b>hey.xyz »</b></a>
+    <br><br>
+    <a href="https://hey.xyz/discord"><b>Discord</b></a>
+    •
+    <a href="https://github.com/heyxyz/hey/issues/new"><b>Issues</b></a>
+</div>
 
-![Heroku](https://heroku-badge.herokuapp.com/?app=foodie-social) ![Vercel](https://vercelbadge.vercel.app/api/jgudo/foodie)
+## 🌿 About Hey
 
+Hey is a cutting-edge social media application that leverages the power of [Lens Protocol](http://lens.xyz) 🌿 to create a decentralized and permissionless platform for users to interact, share, and engage with one another. With a focus on privacy, security, and user control, Hey aims to revolutionize the social media landscape by providing a more transparent and equitable digital environment for its users.
 
+## 📦 Environments
 
-## Table of contents
-* [Features](#features)
-* [Technologies](#technologies)
-* [Installation](#installation)
-* [Run Locally](#run_local)
-* [Deployment](#deployment)
-* [Screenshots](#screenshots)
+| Name            | Link                            |
+| --------------- | ------------------------------- |
+| Mainnet         | https://hey.xyz                 |
+| Testnet         | https://testnet.hey.xyz         |
+| Staging         | https://staging.hey.xyz         |
+| Sandbox         | https://sandbox.hey.xyz         |
+| Staging Sandbox | https://staging-sandbox.hey.xyz |
 
-## Features
-This web app consists of a basic features/functionalities of a socia media
-* Login and Registration
-* Notification
-* Private Messaging
-* Post CRUD functionality
-* Comment feature
-* Profile Customization
-* Followers/Following feature
-* Search Feature
+## ✅ Community
 
-## Technologies
-|   Front End |  Back End   |
-| ----------- | ------------|
-| React 17.0.1| Node 12.18.1|
-| TypeScript  | MongoDB     |
-| Redux       | Mongoose    |
-| Redux-Saga  | SocketIO    |
-| React Router| Express JS  |
-| TailwindCSS | Passport JS |
-| PostCSS     | Google Cloud Storage|
-| Axios       |             |
+For a place to have open discussions on features, voice your ideas, or get help with general questions please visit our community at [Discord](https://hey.xyz/discord).
 
-## Installation
-To install both ends (frontend/server). 
-```
-$ npm run init-project
-```
-2
-Or to install them individually
-```
-$ cd frontend // or cd server
-$ npm install
-```
+## 📊 Repo Activity
 
-## Run locally
-Before running the project, make sure to have the following done:
-* Download and install [MongoDB](https://www.mongodb.com/)
-* Create [Firebase Project](https://console.firebase.google.com/u/0/) for storage bucket
-* Create Google Service Account json key and configure ENV variable to your machine
+<img width="100%" src="https://repobeats.axiom.co/api/embed/af135d3dfdb3605cc3db676472ca174173ac2fb7.svg" alt="Repobeats analytics" />
 
-Create ```.env-dev``` or ```.end-prod``` env variables and set the following:
-```
-MONGODB_URI=<mongodb uri | default local = mongodb://localhost:27017 >
-DB_NAME=<your database name>
-PORT=<port eg: 9000>
-CLIENT_URL=<your frontend url, default: http://localhost:3000>
-SESSION_SECRET=<any secret key>
-SESSION_NAME=<any name you want>
-FIREBASE_PROJECT_ID=<firebase project id found on your firebase config settigs>
-FIREBASE_STORAGE_BUCKET_URL=<firebase bucket url found on your firebase config settigs>
-GOOGLE_APPLICATION_CREDENTIALS=<if you haven't set the ENV variable in your machine, you can set the relative path of the json file here>
-FACEBOOK_CLIENT_ID=<you app client id>
-FACEBOOK_CLIENT_SECRET=<you app client secret>
-GITHUB_CLIENT_ID=<you app client id>
-GITHUB_CLIENT_SECRET=<you app client id>
-```
+## 💕 Contributors
 
-You can get your Facebook client id/secret here [Facebook for developers](http://developers.facebook.com/) and for GitHub here [Register Github OAuth App](https://github.com/settings/applications/new) and set the necessary env vars above.  
+We love contributors! Feel free to contribute to this project but please read the [Contributing Guidelines](CONTRIBUTING.md) before opening an issue or PR so you understand the branching strategy and local development environment.
 
-After doing the steps above, you have to run your ```Mongo Server``` and finally you can now run both ends simultaneously by running: 
-```
-$ npm start
-```
+<a href="https://github.com/heyxyz/hey/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=heyxyz/hey" />
+</a>
 
-Or you can run them individually
-```
-$ npm run start-client // frontend
-$ npm run start-server // backend
+## ⚖️ License
 
-// Or you can change to individual directory then run 
-$ cd frontend // or cd server
-$ npm start
-```
-
-## Deployment
-You can deploy your react app in [Vercel](http://vercel.app/) or whatever your preferred deployment platform. 
-And for the backend, you can deploy your server in [Heroku](https://heroku.com)
-
-## Screenshots
-
-![Foodie screenshot](https://raw.githubusercontent.com/jgudo/foodie/master/frontend/src/images/screen1.png)
-![Foodie screenshot](https://raw.githubusercontent.com/jgudo/foodie/master/frontend/src/images/screen2.png)
-![Foodie screenshot](https://raw.githubusercontent.com/jgudo/foodie/master/frontend/src/images/screen3.png)
-![Foodie screenshot](https://raw.githubusercontent.com/jgudo/foodie/master/frontend/src/images/screen4.png)
+Hey is open-sourced software licensed under the © [AGPLv3](LICENSE).
