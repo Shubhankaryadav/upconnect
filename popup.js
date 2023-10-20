@@ -3,8 +3,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // Define variables for the UI elements
     const startLoggingButton = document.getElementById('start-logging');
     const stopLoggingButton = document.getElementById('stop-logging');
+    const previousUrl = document.getElementById('previous-url');
     const currentUrl = document.getElementById('current-url');
-    const targetUrl = document.getElementById('target-url');
     const clickLog = document.getElementById('click-log');
     const rewardPointsElement = document.getElementById('reward-points');
     const resetPointsButton = document.getElementById('reset-points');
@@ -13,10 +13,10 @@ document.addEventListener('DOMContentLoaded', function () {
     let isLogging = false;
     let previousURL = ''; // Track the previous URL for changes
 
-    // Function to update the UI with the current and target URLs
-    function updateURLs(current, target) {
+    // Function to update the UI with the previous and current URLs
+    function updateURLs(previous, current) {
+        previousUrl.textContent = previous;
         currentUrl.textContent = current;
-        targetUrl.textContent = target;
     }
 
     // Function to display click data in the popup
