@@ -1,9 +1,9 @@
 {
   "manifest_version": 3,
   "name": "UpConnect",
-  "version": "1.0",
+  "version": "1.1",
   "description": "Logs user clicks and rewards them through Smart Contracts on web pages",
-  "permissions": ["activeTab", "storage"],
+  "permissions": ["activeTab", "storage", "webNavigation"],
   "background": {
     "service_worker": "background.js"
   },

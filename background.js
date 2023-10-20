@@ -1,4 +1,5 @@
 // background.js
+
 let clickData = [];
 let isLogging = false;
 let currentURL = '';
@@ -9,8 +10,10 @@ chrome.runtime.onInstalled.addListener(() => {
     // Initialize or load your data collection mechanism here
     // Load reward points from storage
     chrome.storage.local.get(['rewardPoints'], function (result) {
-        if (result.rewardPoints !== undefined) {
-            rewardPoints = result.rewardPoints;
+        if (!chrome.runtime.lastError) {
+            rewardPoints = result.rewardPoints || 0;
+        } else {
+            console.error('Error loading reward points:', chrome.runtime.lastError);
         }
     });
 });
@@ -47,11 +50,19 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
     if (message.action === 'incrementRewardPoints') {
         rewardPoints += 0.1;
-        chrome.storage.local.set({ rewardPoints: rewardPoints });
+        chrome.storage.local.set({ rewardPoints: rewardPoints }, function () {
+            if (chrome.runtime.lastError) {
+                console.error('Error saving reward points:', chrome.runtime.lastError);
+            }
+        });
     }
 
     if (message.action === 'resetRewardPoints') {
         rewardPoints = 0;
-        chrome.storage.local.set({ rewardPoints: rewardPoints });
+        chrome.storage.local.set({ rewardPoints: rewardPoints }, function () {
+            if (chrome.runtime.lastError) {
+                console.error('Error resetting reward points:', chrome.runtime.lastError);
+            }
+        });
     }
 });
