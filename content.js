@@ -1,3 +1,5 @@
+
+//const { ethers } = require("ethers");
 // Define a regular expression pattern to match ad-related domains
 var adPattern = /s0\.2mdn\.net|1-1ads\.com|101com\.com|.../;
 
@@ -18,6 +20,7 @@ function detectAds() {
 
   // Reward the user with points equal to the number of ads detected
   rewardPoints(adCount);
+
 }
 
 // Function to reward the user with points

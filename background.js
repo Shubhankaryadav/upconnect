@@ -1,5 +1,10 @@
 // background.js
 
+//const { ethers } = require("ethers");
+//const { Web3Provider } = require("@ethersproject/providers");
+//const { getAddress } = require("ethers");
+
+
 let isLogging = false;
 // Initialize the reward points
 let rewardPoints = 0;

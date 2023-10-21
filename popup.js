@@ -1,6 +1,10 @@
 // popup.js
-
+//const { ethers } = require("ethers");
+//const { Web3Provider } = require("@ethersproject/providers");
+//const { getAddress } = require("ethers");
 // Function to update the dashboard with reward points data
+
+
 function updateDashboard() {
     chrome.storage.sync.get(["rewardPoints"], (result) => {
         const rewardPoints = result.rewardPoints || 0;
