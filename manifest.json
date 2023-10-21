@@ -1,29 +1,47 @@
 {
-  "manifest_version": 3,
+  "manifest_version": 2, 
+
   "name": "UpConnect",
-  "version": "1.1",
-  "description": "Logs user clicks and rewards them through Smart Contracts on web pages",
-  "permissions": ["activeTab", "storage", "webNavigation"],
-  "background": {
-    "service_worker": "background.js"
-  },
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": ["content.js"]
-    }
+  "version": "1.0",
+  "description": "Earn reward points by detecting ads on websites.",
+
+  "permissions": [
+    "activeTab", 
+    "storage" 
   ],
+
   "action": {
-    "default_popup": "popup.html",
+    "default_popup": "popup.html", 
     "default_icon": {
       "16": "images/icon16.png",
       "48": "images/icon48.png",
       "128": "images/icon128.png"
     }
   },
+
   "icons": {
     "16": "images/icon16.png",
     "48": "images/icon48.png",
     "128": "images/icon128.png"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"], 
+      "js": ["content.js"] 
+    }
+  ],
+
+  "browser_action": {
+    "default_popup": "popup.html", 
+    "default_icon": {
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    }
+  },
+
+  "background": {
+    "service_worker": "background.js" 
   }
 }

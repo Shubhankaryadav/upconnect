@@ -2,28 +2,25 @@
 <html>
 <head>
     <title>UpConnect Dashboard</title>
-    <style>
-        body {
-            width: 300px;
-            padding: 10px;
-        }
-
-        h2 {
-            font-size: 16px;
-            margin-bottom: 10px;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-    <h2>UpConnect</h2>
-    <p><b>Previous URL:</b> <span id="previous-url">N/A</span></p>
-    <p><b>Current URL:</b> <span id="current-url">N/A</span></p>
-    <p><b>Reward Points:</b> <span id="reward-points">0</span></p>
-    <button id="stop-logging">Stop Logging</button>
-    <button id="reset-points">Reset Points</button>
-    <ul id="click-log">
-        <!-- Click data will be added here dynamically -->
-    </ul>
+    <div class="dashboard-container">
+        <h1 class="dashboard-title">UpConnect Dashboard</h1>
+        <div class="dashboard-stat">
+            <p>Ads Found:</p>
+            <span id="adCount">0</span>
+        </div>
+        <div class="dashboard-stat">
+            <p>Reward Points Earned:</p>
+            <span id="rewardPoints">0</span>
+        </div>
+        <div class="dashboard-stat">
+            <p>Points Earned Today:</p>
+            <span id="pointsToday">0</span>
+        </div>
+        <button id="resetButton" class="reset-button">Reset</button>
+    </div>
     <script src="popup.js"></script>
 </body>
 </html>
